@@ -5,6 +5,7 @@ from pathlib import Path
 
 from controller.csvhandler_controller import mask_obfuscate_csv, getcsvheader
 from controller.pdfhandler_controller import maskpdf, getpdfheader
+from controller.aeshandler_controller import encrypt_route, decrypt_route
 
 
 # Configure upload and secured files directories
@@ -47,6 +48,16 @@ def get_pdf_header_route():
 @app.route("/maskobfpdf", methods=['POST'])
 def mask_pdf_route():
     return maskpdf()
+
+# encryption routes
+@app.route("/encryptfile", methods=['POST'])
+def encrypt_file_route():
+    return encrypt_route()
+
+@app.route("/decryptfile", methods=['POST']) 
+def decrypt_file_route():
+    return decrypt_route()
+
 
 
 if __name__ == "__main__":
