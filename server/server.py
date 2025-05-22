@@ -59,6 +59,37 @@ def decrypt_file_route():
     return decrypt_route()
 
 
+# File Download route
+@app.route("/api/files/download/<filename>", methods=['GET'])
+def download_file(filename):
+    try:
+        file_path = os.path.join(app.config['SECURED_FILES_FOLDER'], filename)
+        
+        # First check if file exists
+        if not os.path.exists(file_path):
+            return jsonify({'error': 'File not found'}), 404
+
+        # Send file to client
+        response = send_from_directory(
+            app.config['SECURED_FILES_FOLDER'],
+            filename,
+            as_attachment=True
+        )
+        
+        # Delete the file after sending
+        @response.call_on_close
+        def on_close():
+            try:
+                if os.path.exists(file_path):
+                    os.remove(file_path)
+                    print(f"File {filename} has been removed after download")
+            except Exception as e:
+                print(f"Error removing file {filename}: {str(e)}")
+                
+        return response
+    except Exception as e:
+        return jsonify({'error': str(e)}), 404
+
 
 if __name__ == "__main__":
     app.run(debug=True)
