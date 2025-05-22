@@ -4,6 +4,7 @@ from flask_cors import CORS
 from pathlib import Path
 
 from controller.csvhandler_controller import mask_obfuscate_csv, getcsvheader
+from controller.pdfhandler_controller import maskpdf, getpdfheader
 
 
 # Configure upload and secured files directories
@@ -37,6 +38,15 @@ def get_csv_header_route():
 def mask_csv_route():
     return mask_obfuscate_csv()
 
+
+# pdf routes
+@app.route("/getpdfheader", methods=['POST'])
+def get_pdf_header_route():
+    return getpdfheader()
+
+@app.route("/maskobfpdf", methods=['POST'])
+def mask_pdf_route():
+    return maskpdf()
 
 
 if __name__ == "__main__":
