@@ -1,41 +1,32 @@
-# === Node.js / Next.js ===
-# Dependency directories
+# === Client (Next.js) ===
 client/node_modules/
 client/.npm/
-
-# Next.js build output
 client/.next/
 client/out/
 client/dist/
-
-# Log files
+client/package-lock.json
 client/npm-debug.log*
 client/yarn-debug.log*
 client/yarn-error.log*
 client/pnpm-debug.log*
-
-# Environment variables
 client/.env
 client/.env.local
 client/.env.development.local
 client/.env.test.local
 client/.env.production.local
 
-# Package lock
-client/package-lock.json
+# === Server (Python) ===
+# Cache and bytecode
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/*.so
 
-# === Python ===
-# Byte-compiled / optimized / DLL files
-server/__pycache__/
-server/*.py[cod]
-server/*$py.class
-server/*.so
-
-# Distribution / packaging
+# Build/distribution
 server/.Python
 server/build/
-server/develop-eggs/
 server/dist/
+server/develop-eggs/
 server/downloads/
 server/eggs/
 server/.eggs/
@@ -49,11 +40,12 @@ server/.installed.cfg
 server/*.egg
 server/MANIFEST
 
-# Installer logs
+# Logs and debug
+server/*.log
 server/pip-log.txt
 server/pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Test/coverage
 server/htmlcov/
 server/.tox/
 server/.nox/
@@ -66,24 +58,21 @@ server/*.cover
 server/.hypothesis/
 server/.pytest_cache/
 
-# Virtual Environments
+# Virtual environments
 server/env/
 server/ENV/
 server/.venv/
 server/env.bak/
 server/venv.bak/
 
-# Logs and debug files
-server/*.log
-
 # Flask specific
 server/instance/
 server/.webassets-cache
 
-# Environment variables
+# Environment
 server/.env
 
-# === Global OS / Editor / Misc Files ===
+# === Global / Editor / OS ===
 .DS_Store
 *.swp
 .sass-cache/
@@ -92,7 +81,7 @@ server/.env
 Thumbs.db
 ehthumbs.db
 
-# === Includes (explicitly tracked files/folders) ===
+# === Explicit Includes (track even if ignored above) ===
 !server/venv/
 !server/en_core_web_sm/
 !server/vosk-model-small-en-us-0.15/
