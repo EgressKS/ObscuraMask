@@ -1,4 +1,6 @@
-"use client";
+'use client';
+
+import dynamic from 'next/dynamic';
 import Link from "next/link";
 import {
   Shield,
@@ -13,7 +15,7 @@ import Image from "next/image";
 import Header from "@/components/header"; 
 import Footer from "@/components/footer";
 
-export default function LandingPage() {
+function LandingPage() {
   const features = [
     {
       icon: <Lock className="w-12 h-12 mx-auto text-indigo-600 mb-4" />,
@@ -69,7 +71,7 @@ export default function LandingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link
-              href="/readFile"
+              href="/file-read"
               className="group relative inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden"
             >
               <span className="relative z-10 flex items-center">
@@ -262,3 +264,7 @@ export default function LandingPage() {
     </div>
   );
 }
+
+export default dynamic(() => Promise.resolve(LandingPage), {
+  ssr: false
+});

@@ -11,9 +11,14 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between">
         <div className="flex items-center gap-3 hover:scale-105 transition-transform">
           <Shield className="w-8 h-8 text-indigo-600" />
-          <span className="text-3xl font-serif font-bold bg-gradient-to-r from-indigo-600 via-indigo-700 to-indigo-800 bg-clip-text text-transparent">
-            ObscuraMask
-          </span>
+          <button>
+            <Link
+              href="/"
+              className="text-2xl font-bold font-serif text-gray-800 hover:text-indigo-600 transition-colors"
+            >
+              ObscuraMask
+            </Link>
+          </button>
         </div>
         <nav className="hidden md:text-sm  md:flex items-center gap-10 lg:text-lg font-medium font-serif">
           <Link
@@ -36,7 +41,7 @@ export default function Header() {
           </Link>
 
           <Link
-            href="/readFile"
+            href="/file-read"
             className="bg-indigo-600 text-white px-6 py-2.5 rounded-full hover:bg-indigo-700 transition-all hover:shadow-lg hover:scale-105 active:scale-95"
           >
             Get Started
@@ -87,7 +92,7 @@ export default function Header() {
             </li>
             <li>
               <Link
-                href="/readFile"
+                href="/file-read"
                 onClick={() => setMenuOpen(false)}
                 className="block py-3 px-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all hover:shadow-lg active:scale-95"
               >
